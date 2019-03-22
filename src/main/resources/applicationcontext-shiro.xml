@@ -17,10 +17,5 @@
 	http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
 	http://www.springframework.org/schema/mvc    
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <!--组件扫描-->
-    <context:component-scan base-package="com.shiro.service"/>
-    <!--使@transaction生效-->
-    <tx:annotation-driven/>
-    <!-- 使@aspectj生效 自动为@aspectj标记的bean创建代理,织入切面    proxy-target-class为true为cglib代理(只支持类上注解),proxy-target-class为false为jdk代理,默认jdk代理-->
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
 </beans>

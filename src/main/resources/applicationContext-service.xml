@@ -17,25 +17,16 @@
 	http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
 	http://www.springframework.org/schema/mvc    
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <!--使用最新的处理器映射器和适配器以及配置json解析器-->
-    <mvc:annotation-driven/>
     <!--组件扫描-->
-    <context:component-scan base-package="com.shiro.controller"/>
+    <context:component-scan base-package="com.shiro.service"/>
 
-
-    <!--视图解析器-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
-        <property name="prefix" value="/shiro/"/>
-        <property name="suffix" value=".jsp "/>
-    </bean>
-
-    <!--配置静态资源-->
-    <mvc:resources mapping="/static/**" location="/static/"/>
-
-    <!--配置文件解析器-->
-    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
-        <property name="maxUploadSize" value="5242880"/>
+    <!--使@transaction生效-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+        <property name="dataSource" ref="druidDataSource"/>
     </bean>
 
 
+    <!-- 使@aspectj生效 自动为@aspectj标记的bean创建代理,织入切面    proxy-target-class为true为cglib代理(只支持类上注解),proxy-target-class为false为jdk代理,默认jdk代理-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>
