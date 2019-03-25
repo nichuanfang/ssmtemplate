@@ -1,7 +1,6 @@
 package com.shiro.dao;
 
-import com.shiro.entity.User;
-import org.springframework.stereotype.Repository;
+import com.shiro.entity.Users;
 
 /**
  * @description:
@@ -10,6 +9,6 @@ import org.springframework.stereotype.Repository;
  * @create: 2019-03-22 18:27
  * @version:
  **/
-public interface UserMapper {
-    void insert(User user);
+public interface UsersMapper {
+    void insert(Users users);
 }
